@@ -8,7 +8,7 @@ export default class StepTwo extends React.Component {
     const { to } = this.props.wizardContext;
     return (
       <div>
-        <h6>Enter From Address</h6>
+        <h3>Enter From Address</h3>
         <Form.Field>
           <label>Name</label>
           <input

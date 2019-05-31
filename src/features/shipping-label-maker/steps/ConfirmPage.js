@@ -53,7 +53,7 @@ export default class ConfirmPage extends React.Component {
   render() {
     return (
       <div>
-        <h3> Confirm your information </h3>
+        <h3> Confirm Your Information </h3>
         <p> From Information </p>
         <List as='ul'>
           {this.getKey('from')}

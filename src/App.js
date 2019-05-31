@@ -11,15 +11,15 @@ export default class ShippingLabelMaker extends React.Component {
     this.state = {
       finished: false
     };
-    this.makeLabel = this.makeLabel.bind(this);
   }
 
-  makeLabel(val) {
+  makeLabel=(val)=>{
     this.setState({
       finished: true,
       info: val
     });
   }
+  
   render() {
     return (
       <div>
