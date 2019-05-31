@@ -1,26 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from './features/shipping-label-maker/Header.js';
+import Wizard from './core/components/wizard/wizard.js';
+import steps from './features/shipping-label-maker/steps/Actions.js';
+import shippingInfo from './features/shipping-label-maker/ShippingInfo.js';
+import ShippingLabel from './features/shipping-label-maker/ShippingLabel';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class ShippingLabelMaker extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      finished: false
+    };
+    this.makeLabel = this.makeLabel.bind(this);
+  }
+
+  makeLabel(val) {
+    this.setState({
+      finished: true,
+      info: val
+    });
+  }
+  render() {
+    return (
+      <div>
+        {this.state.finished ? (
+          <ShippingLabel info={this.state.info} />
+        ) : (
+          <Wizard
+            header={Header}
+            steps={steps}
+            wizardContext={shippingInfo}
+            onComplete={this.makeLabel}
+          />
+        )}
+      </div>
+    );
+  }
 }
-
-export default App;
